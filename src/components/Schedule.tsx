@@ -1,16 +1,17 @@
+import * as ROUTES from "../constants/routes";
+import EditIcon from "@material-ui/icons/Edit";
+import React from "react";
+import {Link} from "react-router-dom";
+import {makeStyles, Theme} from "@material-ui/core/styles";
 import {
-  Button, Checkbox,
+  Button,
   createStyles,
-  IconButton,
   Table,
   TableBody,
   TableCell,
-  TableContainer, TableHead,
+  TableContainer, TableHead, TableRow,
   Typography
 } from "@material-ui/core";
-import {makeStyles, Theme} from "@material-ui/core/styles";
-import EditIcon from "@material-ui/icons/Edit";
-import React from "react";
 
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -28,32 +29,38 @@ const Schedule = () => {
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <div>
           <Typography variant="h6">
-           Schedule
+            <i className="fas fa-calendar-week"/>&nbsp; Schedule
           </Typography>
         </div>
         <div>
-          <Button variant="contained" color="primary">
-            <EditIcon/> Edit
+          <Button
+            color="primary"
+            component={Link}
+            startIcon={<EditIcon/>}
+            to={ROUTES.EDIT_SCHEDULE}
+            variant="contained"
+          >
+            Edit
           </Button>
         </div>
       </div>
       <TableContainer className={classes.root}>
         <Table>
           <TableHead>
-            <TableCell>
-              <strong>Time</strong>
-            </TableCell>
-            <TableCell>
-              <strong>Task</strong>
-            </TableCell>
-            <TableCell>
-              <strong>On Duty</strong>
-            </TableCell>
+            <TableRow>
+              <TableCell align="left">
+                <strong>Time</strong>
+              </TableCell>
+              <TableCell align="left">
+                <strong>On Duty</strong>
+              </TableCell>
+            </TableRow>
           </TableHead>
           <TableBody>
-            <TableCell>3am - 6am</TableCell>
-            <TableCell>Feeding</TableCell>
-            <TableCell>Dani</TableCell>
+            <TableRow>
+              <TableCell align="left">3am - 6am</TableCell>
+              <TableCell align="left">Dani</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
