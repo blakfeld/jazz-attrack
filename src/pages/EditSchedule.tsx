@@ -1,16 +1,33 @@
 import DateFnsUtils from "@date-io/date-fns";
-import {Grid, Table, TableRow, TableCell, TableContainer, TableHead, Typography, TableBody} from "@material-ui/core";
+import {
+  Button,
+  FormControl,
+  Grid,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography
+} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
 import {KeyboardTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
-import KeyboardDateInput from "@material-ui/pickers/_shared/KeyboardDateInput";
 import React, {useEffect, useState} from "react";
 import {Redirect} from "react-router-dom";
 import BasePage from "../components/Base/BasePage";
+import ButtonHeader from "../components/ButtonHeader";
+import SaveCancelButtonGroup from "../components/SaveCancelButtonGroup";
 import * as COLLECTIONS from "../constants/collections";
 import * as ROUTES from "../constants/routes";
 import {Parent} from "../enums";
 import {store} from "../services/firebase";
 import {Schedule} from "../types";
-
 
 const EditSchedule = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -47,9 +64,19 @@ const EditSchedule = () => {
     <BasePage>
       <Grid container direction="row" justify="center" spacing={3}>
         <Grid item xs={12}>
-          <Typography variant="h5">
+          <ButtonHeader
+            button={
+              <Button
+                color="primary"
+                startIcon={<AddIcon/>}
+                variant="contained"
+              >
+                Add
+              </Button>
+            }
+          >
             <i className="fas fa-calendar-week"/>&nbsp; Edit Schedule
-          </Typography>
+          </ButtonHeader>
         </Grid>
         <Grid item xs={12}>
           <TableContainer>
@@ -64,6 +91,9 @@ const EditSchedule = () => {
                   </TableCell>
                   <TableCell>
                     <strong>On Duty</strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>Actions</strong>
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -91,10 +121,33 @@ const EditSchedule = () => {
                       />
                     </MuiPickersUtilsProvider>
                   </TableCell>
+                  <TableCell>
+                    <FormControl>
+                      <InputLabel>Parent</InputLabel>
+                      <Select
+                        onChange={(e) => console.log(e)}
+                        value={Parent.KORY}
+                      >
+                        <MenuItem value={Parent.KORY}>Kory</MenuItem>
+                        <MenuItem value={Parent.DANI}>Dani</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+                  <TableCell>
+                    <IconButton>
+                      <DeleteIcon/>
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
+        </Grid>
+        <Grid item xs={12}>
+          <SaveCancelButtonGroup
+            floatRight={true}
+            onSave={() => console.log('foo')}
+          />
         </Grid>
       </Grid>
     </BasePage>

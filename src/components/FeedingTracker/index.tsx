@@ -1,4 +1,4 @@
-import {Button, Typography} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
@@ -6,6 +6,7 @@ import * as COLLECTIONS from '../../constants/collections';
 import * as ROUTES from '../../constants/routes';
 import {store} from "../../services/firebase";
 import {Feeding} from "../../types";
+import ButtonHeader from "../ButtonHeader";
 import FeedingTable from "./FeedingTable";
 
 
@@ -33,13 +34,8 @@ const FeedingTracker = () => {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <div>
-          <Typography variant="h6">
-            <i className="fas fa-utensils-alt"/>&nbsp; Feedings
-          </Typography>
-        </div>
-        <div>
+      <ButtonHeader
+        button={
           <Button
             color="primary"
             component={Link}
@@ -49,8 +45,10 @@ const FeedingTracker = () => {
           >
             Add
           </Button>
-        </div>
-      </div>
+        }
+      >
+        <i className="fas fa-utensils-alt"/>&nbsp; Feedings
+      </ButtonHeader>
       <FeedingTable feedings={feedings}/>
     </div>
   );

@@ -13,6 +13,7 @@ import {
   FormControlLabel,
   Grid,
 } from "@material-ui/core";
+import SaveCancelButtonGroup from "./SaveCancelButtonGroup";
 
 
 interface ChangingControlProps {
@@ -87,27 +88,10 @@ const ChangingControl = ({
         />
       </Grid>
       <Grid item xs={12}>
-        <div style={{float: "right"}}>
-          <ButtonSpacer>
-            <Button
-              color="secondary"
-              component={Link}
-              startIcon={<CancelIcon/>}
-              to={ROUTES.HOME}
-              variant="contained"
-            >
-              Cancel
-            </Button>
-            <Button
-              color="primary"
-              onClick={handleSave}
-              startIcon={<SaveIcon/>}
-              variant="contained"
-            >
-              Save
-            </Button>
-          </ButtonSpacer>
-        </div>
+        <SaveCancelButtonGroup
+          floatRight={true}
+          onSave={handleSave}
+        />
       </Grid>
     </Grid>
   );

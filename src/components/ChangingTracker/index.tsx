@@ -1,4 +1,4 @@
-import {Button, Typography} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
@@ -6,6 +6,7 @@ import * as COLLECTIONS from '../../constants/collections';
 import * as ROUTES from '../../constants/routes';
 import {store} from "../../services/firebase";
 import {Changing} from "../../types";
+import ButtonHeader from "../ButtonHeader";
 import ChangingTable from "./ChangingTable";
 
 
@@ -33,13 +34,8 @@ const ChangingTracker = () => {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <div>
-          <Typography variant="h6">
-            <i className="fad fa-baby"/>&nbsp; Changings
-          </Typography>
-        </div>
-        <div>
+      <ButtonHeader
+        button={
           <Button
             color="primary"
             component={Link}
@@ -49,8 +45,10 @@ const ChangingTracker = () => {
           >
             Add
           </Button>
-        </div>
-      </div>
+        }
+      >
+        <i className="fad fa-baby"/>&nbsp; Changings
+      </ButtonHeader>
       <ChangingTable changings={changings}/>
     </div>
   )

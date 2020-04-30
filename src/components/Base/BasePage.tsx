@@ -1,4 +1,4 @@
-import {createStyles, Paper, Theme} from "@material-ui/core";
+import {createStyles, Grid, Paper, Theme} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import React from 'react';
 import BodyContainer, {BodyContainerProps} from "../BodyContainer";
@@ -15,9 +15,13 @@ const BasePage = ({children}: BodyContainerProps) => {
 
   return (
     <BodyContainer>
-      <Paper className={classes.paper}>
-        {children}
-      </Paper>
+      <Grid container direction="row" justify="center">
+        <Grid item xs={10}>
+          <Paper className={classes.paper}>
+            {children}
+          </Paper>
+        </Grid>
+      </Grid>
     </BodyContainer>
   )
 

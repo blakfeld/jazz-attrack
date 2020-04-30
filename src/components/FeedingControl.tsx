@@ -21,6 +21,7 @@ import {
   TextField
 } from "@material-ui/core";
 import ButtonSpacer from "./ButtonSpacer";
+import SaveCancelButtonGroup from "./SaveCancelButtonGroup";
 
 
 interface FeedingControlProps {
@@ -120,27 +121,10 @@ const FeedingControl = ({
         </FormControl>
       </Grid>
       <Grid item xs={12}>
-        <div style={{float: "right"}}>
-          <ButtonSpacer>
-            <Button
-              color="secondary"
-              component={Link}
-              startIcon={<CancelIcon/>}
-              to={ROUTES.HOME}
-              variant="contained"
-            >
-              Cancel
-            </Button>
-            <Button
-              color="primary"
-              onClick={handleSave}
-              startIcon={<SaveIcon/>}
-              variant="contained"
-            >
-              Save
-            </Button>
-          </ButtonSpacer>
-        </div>
+        <SaveCancelButtonGroup
+          floatRight={true}
+          onSave={handleSave}
+        />
       </Grid>
     </Grid>
   );

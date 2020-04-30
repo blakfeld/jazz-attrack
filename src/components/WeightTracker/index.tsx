@@ -5,7 +5,8 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {Weight} from "../../types";
 import {store} from "../../services/firebase";
-import {Button, Typography} from "@material-ui/core";
+import {Button} from "@material-ui/core";
+import ButtonHeader from "../ButtonHeader";
 import WeightTable from "./WeightTable";
 
 
@@ -34,13 +35,8 @@ const WeightTracker = () => {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <div>
-          <Typography variant="h6">
-            <i className="fas fa-balance-scale-right"/>&nbsp; Weight
-          </Typography>
-        </div>
-        <div>
+      <ButtonHeader
+        button={
           <Button
             color="primary"
             component={Link}
@@ -50,8 +46,10 @@ const WeightTracker = () => {
           >
             Add
           </Button>
-        </div>
-      </div>
+        }
+      >
+        <i className="fas fa-balance-scale-right"/>&nbsp; Weight
+      </ButtonHeader>
       <WeightTable weighIns={weighIns}/>
     </div>
   )

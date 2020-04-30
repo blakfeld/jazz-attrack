@@ -7,6 +7,7 @@ import * as ROUTES from "../../constants/routes";
 import {Parent} from "../../enums";
 import {store} from "../../services/firebase";
 import {Schedule} from "../../types";
+import ButtonHeader from "../ButtonHeader";
 import ScheduleTable from "./ScheduleTable";
 
 const ScheduleTracker = () => {
@@ -33,13 +34,8 @@ const ScheduleTracker = () => {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <div>
-          <Typography variant="h6">
-            <i className="fas fa-calendar-week"/>&nbsp; Schedule
-          </Typography>
-        </div>
-        <div>
+      <ButtonHeader
+        button={
           <Button
             color="primary"
             component={Link}
@@ -49,8 +45,10 @@ const ScheduleTracker = () => {
           >
             Edit
           </Button>
-        </div>
-      </div>
+        }
+      >
+        <i className="fas fa-calendar-week"/>&nbsp; Schedule
+      </ButtonHeader>
       <ScheduleTable/>
     </div>
   )

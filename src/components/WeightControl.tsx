@@ -9,6 +9,7 @@ import {Button, Grid, TextField,} from "@material-ui/core";
 import {KeyboardDateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import {Link} from "react-router-dom";
 import {MaterialUiPickersDate} from "@material-ui/pickers/typings/date";
+import SaveCancelButtonGroup from "./SaveCancelButtonGroup";
 
 
 interface WeightControlProps {
@@ -63,27 +64,10 @@ const WeightControl = ({
         />
       </Grid>
       <Grid item xs={12}>
-        <div style={{float: "right"}}>
-          <ButtonSpacer>
-            <Button
-              color="secondary"
-              component={Link}
-              startIcon={<CancelIcon/>}
-              to={ROUTES.HOME}
-              variant="contained"
-            >
-              Cancel
-            </Button>
-            <Button
-              color="primary"
-              onClick={handleSave}
-              startIcon={<SaveIcon/>}
-              variant="contained"
-            >
-              Save
-            </Button>
-          </ButtonSpacer>
-        </div>
+        <SaveCancelButtonGroup
+          floatRight={true}
+          onSave={handleSave}
+        />
       </Grid>
     </Grid>
   );
