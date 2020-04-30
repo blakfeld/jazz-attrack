@@ -6,10 +6,11 @@ import ChangingTableRow from "./ChangingTableRow";
 
 interface ChangingTableProps {
   changings: Changing[];
+  onDelete: (id: string) => void;
 }
 
 
-const ChangingTable = ({changings}: ChangingTableProps) => (
+const ChangingTable = ({changings, onDelete}: ChangingTableProps) => (
   <TableContainer>
     <Table>
       <TableHead>
@@ -29,7 +30,7 @@ const ChangingTable = ({changings}: ChangingTableProps) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {changings.map(c => <ChangingTableRow changing={c}/>)}
+        {changings.map(c => <ChangingTableRow changing={c} onDelete={onDelete}/>)}
       </TableBody>
     </Table>
   </TableContainer>

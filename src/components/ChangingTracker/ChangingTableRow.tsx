@@ -10,10 +10,11 @@ import {Changing} from "../../types";
 
 interface ChangingRowProps {
   changing: Changing;
+  onDelete: (id: string) => void;
 }
 
 
-const ChangingTableRow = ({changing}: ChangingRowProps) => {
+const ChangingTableRow = ({changing, onDelete}: ChangingRowProps) => {
   const {id, pee, poop, time} = changing;
   const formattedTime = moment(time)
     .utc()
@@ -38,7 +39,9 @@ const ChangingTableRow = ({changing}: ChangingRowProps) => {
         >
           <EditIcon/>
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={(e) => onDelete(id as string)}
+        >
           <DeleteIcon/>
         </IconButton>
       </TableCell>

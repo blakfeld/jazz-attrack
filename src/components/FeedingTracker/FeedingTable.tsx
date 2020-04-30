@@ -6,9 +6,10 @@ import FeedingTableRow from "./FeedingTableRow";
 
 interface FeedingTableProps {
   feedings: Feeding[];
+  onDelete: (id: string) => void;
 }
 
-const FeedingTable = ({feedings}: FeedingTableProps) => (
+const FeedingTable = ({feedings, onDelete}: FeedingTableProps) => (
   <TableContainer>
     <Table>
       <TableHead>
@@ -28,7 +29,14 @@ const FeedingTable = ({feedings}: FeedingTableProps) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {feedings.map(f => <FeedingTableRow feeding={f}/>)}
+        {
+          feedings.map(f => (
+            <FeedingTableRow
+              feeding={f}
+              onDelete={onDelete}
+            />
+          ))
+        }
       </TableBody>
     </Table>
   </TableContainer>

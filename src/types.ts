@@ -22,8 +22,7 @@ export interface Weight {
 }
 
 export interface Schedule {
-  id?: string;
   onDuty: Parent;
-  startTime: Date;
-  endTime: Date;
+  task: string
+  time: string,
 }

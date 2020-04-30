@@ -5,11 +5,12 @@ import WeightTableRow from "./WeightTableRow";
 
 
 interface WeightTableProps {
+  onDelete: (id: string) => void;
   weighIns: Weight[];
 }
 
 
-const WeightTable = ({weighIns}: WeightTableProps) => (
+const WeightTable = ({onDelete, weighIns}: WeightTableProps) => (
   <TableContainer>
     <Table>
       <TableHead>
@@ -26,7 +27,7 @@ const WeightTable = ({weighIns}: WeightTableProps) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {weighIns.map(w => <WeightTableRow weighIn={w}/>)}
+        {weighIns.map(w => <WeightTableRow onDelete={onDelete} weighIn={w}/>)}
       </TableBody>
     </Table>
   </TableContainer>

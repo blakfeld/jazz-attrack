@@ -12,26 +12,40 @@ import ChangingTable from "./ChangingTable";
 
 const ChangingTracker = () => {
   const [changings, setChangings] = useState<Changing[]>([]);
+  const [loadData, setLoadData] = useState<boolean>(true);
 
   useEffect(() => {
+    if (loadData) {
+      store.collection(COLLECTIONS.CHANGINGS)
+        .orderBy("time", "desc")
+        .limit(10)
+        .get()
+        .then((snapshot) => {
+          const records: Changing[] = [];
+          snapshot.forEach((snap) => {
+            const {time, ...rest} = snap.data();
+            records.push({
+              id: snap.id,
+              time: new Date(time * 1000),
+              ...rest
+            } as Changing)
+          });
+
+          setChangings(records);
+          setLoadData(false);
+        })
+        .catch((error) => console.log('ERROR LOADING CHANGINGS: ', error));
+    }
+  }, [loadData])
+
+  const handleDelete = (id: string) => {
+    console.log('Deleting', id);
     store.collection(COLLECTIONS.CHANGINGS)
-      .orderBy("time", "desc")
-      .limit(10)
-      .get()
-      .then((snapshot) => {
-        const records: Changing[] = [];
-        snapshot.forEach((snap) => {
-          const {time, ...rest} = snap.data();
-          records.push({
-            id: snap.id,
-            time: new Date(time * 1000),
-            ...rest
-          } as Changing)
-        });
-        setChangings(records);
-      })
-      .catch((error) => console.log('ERROR LOADING CHANGINGS: ', error));
-  }, [])
+      .doc(id)
+      .delete()
+      .then(() => setLoadData(true))
+      .catch((error) => console.log(`ERROR DELETING CHANGING WITH ID: ${id}`, error));
+  }
 
   return (
     <div>
@@ -50,7 +64,10 @@ const ChangingTracker = () => {
       >
         <i className="fad fa-baby"/>&nbsp; Changings
       </ButtonHeader>
-      <ChangingTable changings={changings}/>
+      <ChangingTable
+        changings={changings}
+        onDelete={handleDelete}
+      />
     </div>
   )
 };

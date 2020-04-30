@@ -1,9 +1,14 @@
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 import React from "react";
+import {Schedule} from "../../types";
 import ScheduleTableRow from "./ScheduleTableRow";
 
 
-const ScheduleTable = () => (
+interface ScheduleTableProps {
+  schedule: Schedule[];
+}
+
+const ScheduleTable = ({schedule}: ScheduleTableProps) => (
   <TableContainer>
     <Table>
       <TableHead>
@@ -12,7 +17,7 @@ const ScheduleTable = () => (
             <strong>Start Time</strong>
           </TableCell>
           <TableCell>
-            <strong>End Time</strong>
+            <strong>Task</strong>
           </TableCell>
           <TableCell>
             <strong>On Duty</strong>
@@ -20,7 +25,7 @@ const ScheduleTable = () => (
         </TableRow>
       </TableHead>
       <TableBody>
-        <ScheduleTableRow/>
+        {schedule.map(s => <ScheduleTableRow scheduleEntry={s}/>)}
       </TableBody>
     </Table>
   </TableContainer>

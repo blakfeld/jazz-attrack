@@ -5,7 +5,6 @@ import 'typeface-roboto';
 import './App.css';
 import PageHeader from "./components/PageHeader";
 import * as ROUTES from "./constants/routes";
-import EditSchedule from "./pages/EditSchedule";
 import Home from "./pages/Home";
 import NewChanging from "./pages/NewChanging";
 import NewFeeding from "./pages/NewFeeding";
@@ -35,7 +34,6 @@ const App = () => {
         <PageHeader/>
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home}/>
-          <Route exact path={ROUTES.EDIT_SCHEDULE} component={EditSchedule}/>
           <Route exact path={ROUTES.NEW_CHANGING} component={NewChanging}/>
           <Route exact path={`${ROUTES.NEW_CHANGING}/:changingId`} component={NewChanging}/>
           <Route exact path={ROUTES.NEW_FEEDING} component={NewFeeding}/>

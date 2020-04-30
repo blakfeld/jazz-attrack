@@ -9,11 +9,12 @@ import {Weight} from "../../types";
 
 
 interface WeightTableRowProps {
+  onDelete: (id: string) => void;
   weighIn: Weight;
 }
 
 
-const WeightTableRow = ({weighIn}: WeightTableRowProps) => {
+const WeightTableRow = ({onDelete, weighIn}: WeightTableRowProps) => {
   const {id, date, weight} = weighIn;
   const formattedDate = moment(date)
     .utc()
@@ -35,7 +36,9 @@ const WeightTableRow = ({weighIn}: WeightTableRowProps) => {
         >
           <EditIcon/>
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={(e) => onDelete(id as string)}
+        >
           <DeleteIcon/>
         </IconButton>
       </TableCell>

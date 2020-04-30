@@ -12,26 +12,38 @@ import WeightTable from "./WeightTable";
 
 const WeightTracker = () => {
   const [weighIns, setWeights] = useState<Weight[]>([]);
+  const [loadData, setLoadData] = useState<boolean>(true);
 
   useEffect(() => {
-    store.collection(COLLECTIONS.WEIGHT)
-      .orderBy("date", "desc")
-      .limit(10)
-      .get()
-      .then((snapshot) => {
-        const records: Weight[] = [];
-        snapshot.forEach((snap) => {
-          const {date, ...rest} = snap.data();
-          records.push({
-            id: snap.id,
-            date: new Date(date * 1000),
-            ...rest
-          } as Weight);
-        });
+    if (loadData) {
+      store.collection(COLLECTIONS.WEIGHT)
+        .orderBy("date", "desc")
+        .limit(10)
+        .get()
+        .then((snapshot) => {
+          const records: Weight[] = [];
+          snapshot.forEach((snap) => {
+            const {date, ...rest} = snap.data();
+            records.push({
+              id: snap.id,
+              date: new Date(date * 1000),
+              ...rest
+            } as Weight);
+          });
 
-        setWeights(records);
-      });
-  }, []);
+          setWeights(records);
+          setLoadData(false);
+        });
+    }
+  }, [loadData]);
+
+  const handleDelete = (id: string) => {
+    store.collection(COLLECTIONS.WEIGHT)
+      .doc(id)
+      .delete()
+      .then(() => setLoadData(true))
+      .catch((error) => console.log(`ERROR DELETING WEIGH-IN WITH ID: ${id}`, error));
+  };
 
 
   return (
@@ -51,7 +63,10 @@ const WeightTracker = () => {
       >
         <i className="fas fa-balance-scale-right"/>&nbsp; Weight
       </ButtonHeader>
-      <WeightTable weighIns={weighIns}/>
+      <WeightTable
+        onDelete={handleDelete}
+        weighIns={weighIns}
+      />
     </div>
   )
 };

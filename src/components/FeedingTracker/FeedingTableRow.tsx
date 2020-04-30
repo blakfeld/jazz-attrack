@@ -10,10 +10,11 @@ import {Feeding} from "../../types";
 
 interface FeedingRowProps {
   feeding: Feeding;
+  onDelete: (id: string) => void;
 }
 
 
-const FeedingTableRow = ({feeding}: FeedingRowProps) => {
+const FeedingTableRow = ({feeding, onDelete}: FeedingRowProps) => {
   const {amount, id, time, type, units} = feeding;
   const formattedTime = moment(time)
     .utc()
@@ -41,7 +42,9 @@ const FeedingTableRow = ({feeding}: FeedingRowProps) => {
         >
           <EditIcon/>
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={(e) => onDelete(id as string)}
+        >
           <DeleteIcon/>
         </IconButton>
       </TableCell>
