@@ -1,10 +1,7 @@
 import {IconButton, TableCell, TableRow} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
 import moment from "moment";
 import React from "react";
-import {Link} from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
 import {Weight} from "../../types";
 
 
