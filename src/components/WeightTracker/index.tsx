@@ -16,6 +16,7 @@ const WeightTracker = () => {
   useEffect(() => {
     store.collection(COLLECTIONS.WEIGHT)
       .orderBy("date", "desc")
+      .limit(10)
       .get()
       .then((snapshot) => {
         const records: Weight[] = [];

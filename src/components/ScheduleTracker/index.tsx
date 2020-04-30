@@ -16,6 +16,7 @@ const ScheduleTracker = () => {
   useEffect(() => {
     store.collection(COLLECTIONS.SCHEDULE)
       .orderBy("time")
+      .limit(10)
       .get()
       .then((snapshot) => {
         const records: Schedule[] = [];

@@ -26,10 +26,10 @@ const ChangingTableRow = ({changing}: ChangingRowProps) => {
         {formattedTime}
       </TableCell>
       <TableCell align="right">
-        <Checkbox checked={poop}/>
+        <Checkbox checked={poop} disabled/>
       </TableCell>
       <TableCell align="right">
-        <Checkbox checked={pee}/>
+        <Checkbox checked={pee} disabled/>
       </TableCell>
       <TableCell align="right">
         <IconButton

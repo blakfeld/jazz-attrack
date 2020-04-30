@@ -16,6 +16,7 @@ const FeedingTracker = () => {
   useEffect(() => {
     store.collection(COLLECTIONS.FEEDINGS)
       .orderBy("time", "desc")
+      .limit(10)
       .get()
       .then((snapshot) => {
         const records: Feeding[] = []

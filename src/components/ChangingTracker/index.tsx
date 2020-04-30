@@ -16,6 +16,7 @@ const ChangingTracker = () => {
   useEffect(() => {
     store.collection(COLLECTIONS.CHANGINGS)
       .orderBy("time", "desc")
+      .limit(10)
       .get()
       .then((snapshot) => {
         const records: Changing[] = [];
