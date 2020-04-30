@@ -34,12 +34,6 @@ const ChangingTableRow = ({changing, onDelete}: ChangingRowProps) => {
       </TableCell>
       <TableCell align="right">
         <IconButton
-          component={Link}
-          to={`${ROUTES.NEW_CHANGING}/${id}`}
-        >
-          <EditIcon/>
-        </IconButton>
-        <IconButton
           onClick={(e) => onDelete(id as string)}
         >
           <DeleteIcon/>

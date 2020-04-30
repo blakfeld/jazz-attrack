@@ -31,12 +31,6 @@ const WeightTableRow = ({onDelete, weighIn}: WeightTableRowProps) => {
       </TableCell>
       <TableCell align="right">
         <IconButton
-          component={Link}
-          to={`${ROUTES.NEW_WEIGHT}/${id}`}
-        >
-          <EditIcon/>
-        </IconButton>
-        <IconButton
           onClick={(e) => onDelete(id as string)}
         >
           <DeleteIcon/>
