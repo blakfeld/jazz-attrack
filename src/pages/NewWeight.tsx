@@ -1,6 +1,6 @@
 import * as COLLECTIONS from "../constants/collections";
 import * as ROUTES from "../constants/routes";
-import BasePage from "../components/BasePage";
+import BasePage from "../components/Base/BasePage";
 import React, {useState} from "react";
 import WeightControl from "../components/WeightControl";
 import {Grid, Typography} from "@material-ui/core";

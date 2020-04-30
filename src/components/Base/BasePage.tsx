@@ -1,7 +1,7 @@
 import {createStyles, Paper, Theme} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import React from 'react';
-import BodyContainer, {BodyContainerProps} from "./BodyContainer";
+import BodyContainer, {BodyContainerProps} from "../BodyContainer";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   'paper': {
@@ -22,5 +22,6 @@ const BasePage = ({children}: BodyContainerProps) => {
   )
 
 };
+
 
 export default BasePage;

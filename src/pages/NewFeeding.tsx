@@ -1,6 +1,6 @@
 import * as COLLECTIONS from '../constants/collections';
 import * as ROUTES from '../constants/routes';
-import BasePage from "../components/BasePage";
+import BasePage from "../components/Base/BasePage";
 import FeedingControl from "../components/FeedingControl";
 import React, {useState} from "react";
 import {Feeding} from "../types";

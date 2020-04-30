@@ -4,7 +4,7 @@ import {KeyboardTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers"
 import KeyboardDateInput from "@material-ui/pickers/_shared/KeyboardDateInput";
 import React, {useEffect, useState} from "react";
 import {Redirect} from "react-router-dom";
-import BasePage from "../components/BasePage";
+import BasePage from "../components/Base/BasePage";
 import * as COLLECTIONS from "../constants/collections";
 import * as ROUTES from "../constants/routes";
 import {Parent} from "../enums";

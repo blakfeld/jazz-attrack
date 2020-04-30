@@ -1,6 +1,6 @@
 import * as COLLECTIONS from "../constants/collections";
 import * as ROUTES from "../constants/routes";
-import BasePage from "../components/BasePage";
+import BasePage from "../components/Base/BasePage";
 import ChangingControl from "../components/ChangingControl";
 import React, {useState} from "react";
 import {Changing} from "../types";

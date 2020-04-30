@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   appBar: {
     color: "rgba(0, 0, 0, 0.8)",
-    backgroundColor: "#e5a3ad",
   },
   addEntryBtn: {}
 }));
