@@ -10,21 +10,9 @@ import schedule from "../../constants/schedule";
 const ScheduleTracker = () => {
   return (
     <div>
-      <ButtonHeader
-        button={
-          <Button
-            color="primary"
-            component={Link}
-            startIcon={<EditIcon/>}
-            to={ROUTES.EDIT_SCHEDULE}
-            variant="contained"
-          >
-            Edit
-          </Button>
-        }
-      >
+      <Typography variant="h5">
         <i className="fas fa-calendar-week"/>&nbsp; Schedule
-      </ButtonHeader>
+      </Typography>
       <ScheduleTable schedule={schedule}/>
     </div>
   )
