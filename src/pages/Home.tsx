@@ -1,10 +1,10 @@
-import {createStyles, Grid, MuiThemeProvider, Paper, Theme} from "@material-ui/core";
+import {createStyles, Grid, Paper, Theme} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
 import BodyContainer from "../components/BodyContainer";
 import ChangingTracker from "../components/ChangingTracker";
 import FeedingTracker from "../components/FeedingTracker";
-import Schedule from "../components/Schedule";
+import ScheduleTracker from "../components/ScheduleTracker";
 import WeightTracker from "../components/WeightTracker";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -22,7 +22,7 @@ const Home = () => {
       <Grid container direction="row" justify="center">
         <Grid item xs={10}>
           <Paper className={classes.row}>
-            <Schedule/>
+            <ScheduleTracker/>
           </Paper>
         </Grid>
         <Grid item xs={10}>

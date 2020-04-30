@@ -74,6 +74,7 @@ const FeedingControl = ({
       <Grid item xs={12} md={4}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDateTimePicker
+            ampm={true}
             label="Feeding Time"
             onChange={handleSetTime}
             value={updatedTime}

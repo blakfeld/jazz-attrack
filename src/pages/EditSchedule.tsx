@@ -1,4 +1,7 @@
-import {Grid, Typography} from "@material-ui/core";
+import DateFnsUtils from "@date-io/date-fns";
+import {Grid, Table, TableRow, TableCell, TableContainer, TableHead, Typography, TableBody} from "@material-ui/core";
+import {KeyboardTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+import KeyboardDateInput from "@material-ui/pickers/_shared/KeyboardDateInput";
 import React, {useEffect, useState} from "react";
 import {Redirect} from "react-router-dom";
 import BasePage from "../components/BasePage";
@@ -47,6 +50,51 @@ const EditSchedule = () => {
           <Typography variant="h5">
             <i className="fas fa-calendar-week"/>&nbsp; Edit Schedule
           </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>
+                    <strong>Start Time</strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>End Time</strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>On Duty</strong>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      <KeyboardTimePicker
+                        ampm={true}
+                        label="Start Time"
+                        onChange={(e) => console.log(e)}
+                        value={new Date()}
+                        variant="inline"
+                      />
+                    </MuiPickersUtilsProvider>
+                  </TableCell>
+                  <TableCell>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      <KeyboardTimePicker
+                        ampm={true}
+                        label="End Time"
+                        onChange={(e) => console.log(e)}
+                        value={new Date()}
+                        variant="inline"
+                      />
+                    </MuiPickersUtilsProvider>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
       </Grid>
     </BasePage>
